@@ -16,7 +16,7 @@ void InitVector(long int s) {
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 
-	auto max = 10000000;
+	auto max = 1000000;
 	auto lprime = 2;
 	auto b = static_cast<int>(sqrt(lprime));
 	auto is_prime = true;
