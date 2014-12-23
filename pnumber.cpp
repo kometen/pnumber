@@ -5,12 +5,12 @@
 
 using namespace std;
 
-vector<long int> v_primes;
+vector<long int> primes;
 
 
 void InitVector(long int s) {
-	v_primes.reserve(s);
-	v_primes.push_back(2);
+	primes.reserve(s);
+	primes.push_back(2);
 }
 
 int main(int argc, char const *argv[]) {
@@ -23,18 +23,18 @@ int main(int argc, char const *argv[]) {
 
 	InitVector(max);
 
-	auto v_primes_s = v_primes.size();
+	auto primes_s = primes.size();
 
 	for (long int i = 3; i < max; i += 2) {
 		is_prime = true;
 		b = static_cast<int>(sqrt(i));
-		for (auto j = 0; b >= v_primes[j]; ++j) {
-			if (i % v_primes[j] == 0) {
+		for (auto j = 0; b >= primes[j]; ++j) {
+			if (i % primes[j] == 0) {
 				is_prime = false;
 			}
 		}
 		if (is_prime) {
-			v_primes.push_back(i);
+			primes.push_back(i);
 			lprime = i;
 		}
 	}
@@ -44,7 +44,7 @@ int main(int argc, char const *argv[]) {
     cout << "Seconds: " << elapsed_secs << endl;
 
 	cout << "Latest prime: " << lprime << endl;
-	cout << "Number of primes: " << v_primes.size() << endl;
-	cout << "Primes pr. sec: " << v_primes.size() / elapsed_secs << endl;
+	cout << "Number of primes: " << primes.size() << endl;
+	cout << "Primes pr. sec: " << primes.size() / elapsed_secs << endl;
 	return 0;
 }
