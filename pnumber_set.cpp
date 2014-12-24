@@ -5,16 +5,16 @@
 
 using namespace std;
 
-vector<long int> primes;
+set<long int> primes;
 
-void InitPrimes(long int s) {
-	primes.push_back(2);
+void InitPrimes() {
+	primes.insert(2);
 }
 
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 
-	auto max = 20;
+	auto max = 10000000;
 	auto lprime = 2;
 	auto b = static_cast<int>(sqrt(lprime));
 	auto is_prime = true;
@@ -26,13 +26,13 @@ int main(int argc, char const *argv[]) {
 	for (long int i = 3; i < max; i += 2) {
 		is_prime = true;
 		b = static_cast<int>(sqrt(i));
-		for (auto j = 0; b >= primes[j]; ++j) {
-			if (i % primes[j] == 0) {
+		for (auto it = primes.begin();it != primes.end() && is_prime; ++it) {
+			if (i % *it == 0) {
 				is_prime = false;
 			}
 		}
 		if (is_prime) {
-			primes.push_back(i);
+			primes.insert(i);
 			lprime = i;
 		}
 	}
@@ -44,5 +44,9 @@ int main(int argc, char const *argv[]) {
 	cout << "Latest prime: " << lprime << endl;
 	cout << "Number of primes: " << primes.size() << endl;
 	cout << "Primes pr. sec: " << primes.size() / elapsed_secs << endl;
+
+/*	for (auto it = primes.begin(); it != primes.end(); ++it) {
+		cout << *it << endl;
+	}*/
 	return 0;
 }
