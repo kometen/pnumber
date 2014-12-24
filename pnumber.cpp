@@ -8,8 +8,7 @@ using namespace std;
 vector<long int> primes;
 
 
-void InitVector(long int s) {
-	primes.reserve(s);
+void InitVector() {
 	primes.push_back(2);
 }
 
@@ -21,14 +20,14 @@ int main(int argc, char const *argv[]) {
 	auto b = static_cast<int>(sqrt(lprime));
 	auto is_prime = true;
 
-	InitVector(max);
+	InitVector();
 
 	auto primes_s = primes.size();
 
 	for (long int i = 3; i < max; i += 2) {
 		is_prime = true;
 		b = static_cast<int>(sqrt(i));
-		for (auto j = 0; b >= primes[j]; ++j) {
+		for (auto j = 0; b >= primes[j] && is_prime; ++j) {
 			if (i % primes[j] == 0) {
 				is_prime = false;
 			}
