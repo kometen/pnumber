@@ -46,8 +46,8 @@ int main(int argc, char const *argv[]) {
 	}
 
 	clock_t end = clock();
-    double elapsed_secs = double(end - begin)/CLOCKS_PER_SEC;
-    cout << "Seconds: " << elapsed_secs << endl;
+	double elapsed_secs = double(end - begin)/CLOCKS_PER_SEC;
+	cout << "Seconds: " << elapsed_secs << endl;
 
 	cout << "Latest prime: " << lprime << endl;
 	cout << "Number of primes: " << primes.size() << endl;
