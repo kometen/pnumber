@@ -29,7 +29,6 @@ int main(int argc, char const *argv[]) {
 
 	for (long int i = 3; i < max; i += 2) {
 		is_prime = true;
-//		b = static_cast<int>(sqrt(i));
 		for (auto j = 0; b >= primes[j] && is_prime; ++j) {
 			if (i % primes[j] == 0) {
 				is_prime = false;
@@ -40,9 +39,9 @@ int main(int argc, char const *argv[]) {
 			lprime = i;
 		}
 		if (i > square) {
+			b++;
 			c++;
 			square = square + 1 + 2 * c;
-			b++;
 		}
 	}
 
