@@ -10,7 +10,7 @@ vector<long int> primes;
 
 void InitVector(long int s) {
 	primes.reserve(s/10);
-	primes.push_back(2);
+	primes.emplace_back(2);
 }
 
 int main(int argc, char const *argv[]) {
@@ -35,7 +35,7 @@ int main(int argc, char const *argv[]) {
 			}
 		}
 		if (is_prime) {
-			primes.push_back(i);
+			primes.emplace_back(i);
 			lprime = i;
 		}
 		if (i > square) {
