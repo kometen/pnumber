@@ -10,8 +10,7 @@ using namespace std;
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 
-	auto m = 1000000000;
-//	auto m = 10000000;
+	auto m = 1e7;
 	auto s = 0;
 	auto a = 0;
 	auto l = 0;
