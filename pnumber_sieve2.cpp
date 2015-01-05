@@ -1,6 +1,5 @@
 // Many thanks to @ThAOSteen.
 
-#include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
@@ -10,19 +9,17 @@ using namespace std;
 int main(int argc, char const *argv[]) {
 	clock_t begin = clock();
 
-	auto m = 1e7;
-	auto s = 0;
-	auto a = 0;
+	const auto m = 1e7;
 	auto l = 0;
 
-	vector<long int> p(m/2, 1);
-	vector<long int> primes;
-	primes.reserve(m/2);
+	vector<uint> p(m/2, 1);
+	vector<uint> primes;
+	primes.reserve(m/15);
 
-	for (long int i = 3; i * i < m; i += 2) {
+	for (uint i = 3; i * i < m; i += 2) {
 		int n = (i - 3) / 2;
 		if (p[n]) {
-			for (long int j = i * i; j < m; j += (2 * i)) {
+			for (uint j = i * i; j < m; j += (2 * i)) {
 				int o = (j - 3) / 2;
 				p[o] = 0;
 			}
@@ -32,10 +29,10 @@ int main(int argc, char const *argv[]) {
 	primes.clear();
 	primes.push_back(2);
 
-	for (long int i = 3; i < m; i += 2) {
-		int n = (i - 3) / 2;
+	for (uint i = 3; i < m; i += 2) {
+		uint n = (i - 3) / 2;
 		if (p[n]) {
-			primes.push_back(n + (n + 3));
+			primes.push_back(2 * n + 3);
 		}
 	}
 
