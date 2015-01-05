@@ -1,6 +1,5 @@
 // Many thanks to @ThAOSteen.
 
-#include <cmath>
 #include <ctime>
 #include <iostream>
 #include <vector>
@@ -15,14 +14,14 @@ int main(int argc, char const *argv[]) {
 	auto a = 0;
 	auto l = 0;
 
-	vector<long int> p(m/2, 1);
-	vector<long int> primes;
-	primes.reserve(m/2);
+	vector<uint> p(m/2, 1);
+	vector<uint> primes;
+	primes.reserve(m/16);
 
-	for (long int i = 3; i * i < m; i += 2) {
+	for (uint i = 3; i * i < m; i += 2) {
 		int n = (i - 3) / 2;
 		if (p[n]) {
-			for (long int j = i * i; j < m; j += (2 * i)) {
+			for (uint j = i * i; j < m; j += (2 * i)) {
 				int o = (j - 3) / 2;
 				p[o] = 0;
 			}
@@ -32,7 +31,7 @@ int main(int argc, char const *argv[]) {
 	primes.clear();
 	primes.push_back(2);
 
-	for (long int i = 3; i < m; i += 2) {
+	for (uint i = 3; i < m; i += 2) {
 		int n = (i - 3) / 2;
 		if (p[n]) {
 			primes.push_back(n + (n + 3));
@@ -41,9 +40,9 @@ int main(int argc, char const *argv[]) {
 
 	clock_t end = clock();
 
-    double elapsed_secs = double(end - begin)/CLOCKS_PER_SEC;
-    cout << "Seconds: " << elapsed_secs << endl;
-    cout << "Latest prime: " << l << endl;
+	double elapsed_secs = double(end - begin)/CLOCKS_PER_SEC;
+	cout << "Seconds: " << elapsed_secs << endl;
+	cout << "Latest prime: " << l << endl;
 	cout << "Number of primes: " << primes.size() << endl;
 	cout << "Primes pr. sec: " << primes.size() / elapsed_secs << endl;
 
